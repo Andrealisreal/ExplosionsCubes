@@ -2,32 +2,28 @@ using UnityEngine;
 
 public class PlayerRay : MonoBehaviour
 {
-    [SerializeField] private Transform _pointer;
+    [SerializeField] private Spawner _spawner;
 
     private Ray _ray;
     private RaycastHit _hit;
+
     private InputReader _input;
-    private Spawner _spawner;
+
     private bool _hasHitValidTarget = false;
 
     private void Awake()
     {
         _input = GetComponent<InputReader>();
-        _spawner = GetComponent<Spawner>();
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         _hasHitValidTarget = false;
 
         if (Physics.Raycast(_ray, out _hit))
-        {
-            _pointer.position = _hit.point;
-
-            if (_hit.collider.TryGetComponent<Spawner>(out _))
+            if (_hit.collider.TryGetComponent<CubeData>(out _))
                 _hasHitValidTarget = true;
-        }
     }
 
     private void OnEnable()
@@ -42,10 +38,10 @@ public class PlayerRay : MonoBehaviour
 
     private void SelectObject()
     {
-        if (!_hasHitValidTarget)
+        if (_hasHitValidTarget == false)
             return;
 
-        if (_hit.collider.TryGetComponent<Spawner>(out Spawner spawner))
-            spawner.Boom();
+        if (_hit.collider.TryGetComponent<CubeData>(out CubeData cubeData))
+            _spawner.Split(cubeData);
     }
 }
