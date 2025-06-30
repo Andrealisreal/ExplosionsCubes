@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 2130521228}
   - component: {fileID: 2130521227}
   - component: {fileID: 2130521226}
+  - component: {fileID: 2130521229}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -575,6 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 8265487916934970981, guid: 0a659b8d0a2448640b5b0e0329fb45b5, type: 3}
   _exploder: {fileID: 410087044}
+  _colorChanger: {fileID: 2130521229}
 --- !u!114 &410087044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1142,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382053901}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2130521229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382053901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f3dc208bfbb1b44b3f5e2fa34ad9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3156359671107636859
 PrefabInstance:
   m_ObjectHideFlags: 0
