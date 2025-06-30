@@ -22,7 +22,7 @@ public class PlayerRay : MonoBehaviour
         _hasHitValidTarget = false;
 
         if (Physics.Raycast(_ray, out _hit))
-            if (_hit.collider.TryGetComponent<CubeData>(out _))
+            if (_hit.collider.TryGetComponent<Cube>(out _))
                 _hasHitValidTarget = true;
     }
 
@@ -41,7 +41,7 @@ public class PlayerRay : MonoBehaviour
         if (_hasHitValidTarget == false)
             return;
 
-        if (_hit.collider.TryGetComponent<CubeData>(out CubeData cubeData))
-            _spawner.Split(cubeData);
+        if (_hit.collider.TryGetComponent<Cube>(out Cube cube))
+            _spawner.Split(cube);
     }
 }

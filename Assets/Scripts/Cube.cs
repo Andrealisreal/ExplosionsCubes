@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class CubeData : MonoBehaviour
+public class Cube : MonoBehaviour
 {
     private float _currentChanceSplit = 100f;
     private float _chanceReductionMultiplier = 2f;
@@ -9,11 +9,13 @@ public class CubeData : MonoBehaviour
 
     public float CurrentChanceSplit => _currentChanceSplit;
 
-    public void Init(float previousChance, Vector3 previousScale)
+    public void Init(float previousChance, Vector3 previousScale, Color color)
     {
+        Renderer renderer = GetComponent<Renderer>();
+
         SetChance(previousChance);
         SetScale(previousScale);
-        SetRandomColor();
+        renderer.material.color = color;
     }
 
     private void SetChance(float chance)
@@ -24,11 +26,5 @@ public class CubeData : MonoBehaviour
     private void SetScale(Vector3 scale)
     {
         transform.localScale = scale * _reductionFactor;
-    }
-
-    private void SetRandomColor()
-    {
-        Renderer renderer = GetComponent<Renderer>();
-        renderer.material.color = new Color(Random.value, Random.value, Random.value);
     }
 }

@@ -11,4 +11,13 @@ public class Exploder : MonoBehaviour
         foreach (Rigidbody rb in rigidbodies)
             rb.AddExplosionForce(_explosionForce, rb.transform.position, _explosionRadius);
     }
+
+    public void Boom(Vector3 explosionCenter, float explosionForce, float explosionRadius, float upwardsModifier)
+    {
+        Collider[] colliders = Physics.OverlapSphere(explosionCenter, explosionRadius);
+
+        foreach (Collider collider in colliders)
+            if (collider.TryGetComponent<Rigidbody>(out Rigidbody rigitbody))
+                rigitbody.AddExplosionForce(explosionForce, explosionCenter, explosionRadius, upwardsModifier);
+    }
 }
